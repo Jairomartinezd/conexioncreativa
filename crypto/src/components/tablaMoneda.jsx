@@ -1,6 +1,6 @@
 import React from 'react'
 
-const tablaMoneda = () => {
+const tablaMoneda = ({m}) => {
   return (
     <>
         <div>tablaMoneda</div>

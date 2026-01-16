@@ -8,8 +8,12 @@ const Index = () => {
 
     return (
         <>
-            <div>index</div>
-            <TM m={mon} />
+            <div className='container'>
+                <h1>index</h1>
+                <TM 
+                    m={mon} 
+                />
+            </div>
         </>
     )
 }
