@@ -1,6 +1,6 @@
 import React from 'react'
 
-const tablaMoneda = ({m}) => {
+const TablaMoneda = ({m}) => {
   return (
     <>
         <div>tablaMoneda</div>
@@ -8,4 +8,4 @@ const tablaMoneda = ({m}) => {
   )
 }
 
-export default tablaMoneda
+export default TablaMoneda
