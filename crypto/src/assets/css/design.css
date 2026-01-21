@@ -1,3 +1,12 @@
-.textoMayus {
+.textoMayus{
     text-transform: uppercase;
-  }
+}
+.textoUSD{
+    font-weight: bold;
+    color: green;
+    margin-left: 5px;
+}
+.textoUSDModal{
+    font-weight: bold;
+    margin-left: 5px;
+}

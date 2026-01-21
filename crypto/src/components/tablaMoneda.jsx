@@ -68,7 +68,7 @@ const TablaMoneda = () => {
                   <td><img src={character.image} width="30" height="30" /></td>
                   <td>{character.name}</td>
                   <td><p className='textoMayus'>{character.symbol}</p></td>
-                  <td>{character.current_price}</td>
+                  <td>{character.current_price}<span className='textoUSD'>$</span></td>
                   <td>
                     <center><a className="btn btn-primary btn-sm" key={character.id} onClick={() => handleShow(character)} >Ver Detalles</a></center>
                     {show && (
@@ -84,18 +84,67 @@ const TablaMoneda = () => {
                         <Modal.Body>
                             <div className='container'>
                                 <div className='row'>
-                                    <div className='col-6'>
-                                        <img src={selectedItemId.image} alt="" width={300} />
+                                    <div className='col-3'>
+                                        <img src={selectedItemId.image} alt="" width="auto" />
                                     </div>
-                                    <div className='col-6'>
+                                    <div className='col-1'></div>
+                                    <div className='col-8'>
                                         <h5>
                                             <b>Nombre:</b>&nbsp;{selectedItemId.name}
                                         </h5>
                                         <h5>
-                                            <b>Idioma:</b>&nbsp;{selectedItemId.symbol}
+                                            <b>S&iacute;mbolo:</b>&nbsp;<span className='textoMayus'>{selectedItemId.symbol}</span>
                                         </h5>
                                         <h5>
-                                            <b>Nombre:</b>&nbsp;{selectedItemId.current_price}
+                                            <b>Precio Actual:</b>&nbsp;{selectedItemId.current_price}<span className='textoUSDModal'>$</span>
+                                        </h5>
+                                        <h5>
+                                            <b>Capitalizaci&oacute;n de Mercado:</b>&nbsp;{selectedItemId.market_cap}
+                                        </h5>
+                                        <h5>
+                                            <b>Clasificaci&oacute;n de Cap. de Mercado:</b>&nbsp;{selectedItemId.market_cap_rank}
+                                        </h5>
+                                        <h5>
+                                            <b>Valoraci&oacute;n Completamente Diluida:</b>&nbsp;{selectedItemId.fully_diluted_valuation}
+                                        </h5>
+                                        <h5>
+                                            <b>Volumen Total:</b>&nbsp;{selectedItemId.total_volume}
+                                        </h5>
+                                        <h5>
+                                            <b>M&iacute;nimo en 24H:</b>&nbsp;{selectedItemId.low_24h}<span className='textoUSDModal'>$</span>
+                                        </h5>
+                                        <h5>
+                                            <b>M&aacute;ximo en 24H:</b>&nbsp;{selectedItemId.high_24h}<span className='textoUSDModal'>$</span>
+                                        </h5>
+                                        <h5>
+                                            <b>Diferencia de Precio en 24H:</b>&nbsp;{selectedItemId.price_change_24h}
+                                        </h5>
+                                        <h5>
+                                            <b>Porcentaje de Cambio de Precio en 24H:</b>&nbsp;{selectedItemId.price_change_percentage_24h}
+                                        </h5>
+                                        <h5>
+                                            <b>Cambio de Capitalizaci&oacute;n Burs&aacute;til en 24h:</b>&nbsp;{selectedItemId.market_cap_change_24h}
+                                        </h5>
+                                        <h5>
+                                            <b>Porcentaje de Cambio de Capitalizaci&oacute;n Burs&aacute;til en 24h:</b>&nbsp;{selectedItemId.market_cap_change_percentage_24h}
+                                        </h5>
+                                        <h5>
+                                            <b>Oferta Circulante:</b>&nbsp;{selectedItemId.circulating_supply}
+                                        </h5>
+                                        <h5>
+                                            <b>Oferta Total:</b>&nbsp;{selectedItemId.total_supply}
+                                        </h5>
+                                        <h5>
+                                            <b>Oferta M&aacute;xima:</b>&nbsp;{selectedItemId.max_supply}
+                                        </h5>
+                                        <h5>
+                                            <b>Nombre:</b>&nbsp;{selectedItemId.name}
+                                        </h5>
+                                        <h5>
+                                            <b>S&iacute;mbolo:</b>&nbsp;{selectedItemId.symbol}
+                                        </h5>
+                                        <h5>
+                                            <b>Precio Actual:</b>&nbsp;{selectedItemId.current_price}
                                         </h5>
                                         <h5>
                                             <b>Nombre:</b>&nbsp;{selectedItemId.last_updated}
