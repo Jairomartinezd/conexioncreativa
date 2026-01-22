@@ -43,8 +43,16 @@ const TablaMoneda = () => {
           <strong>&Uacute;ltima Actualizaci&oacute;n:</strong>
           {ultimoElemento ? (
             <>
-              &nbsp;{new Date(ultimoElemento.last_updated).toLocaleDateString()}&nbsp;
-              {new Date(ultimoElemento.last_updated).toLocaleTimeString()}
+              &nbsp;{new Date(ultimoElemento.last_updated).toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+              })}&nbsp;
+              {new Date(ultimoElemento.last_updated).toISOString('es-ES', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+              }).split('T')[1].split('.')[0]}
             </>
           ) : (
             <> Cargando... </>
@@ -74,7 +82,7 @@ const TablaMoneda = () => {
                     {show && (
                       <Modal show={show} onHide={handleClose} backdrop="static" size="lg">
                         <Modal.Header closeButton>
-                            <Modal.Title>Mostrando Detalles de la Crypto: {selectedItemId ? (
+                            <Modal.Title>Mostrando Detalles de la Crypto {selectedItemId ? (
                               <strong><span>{selectedItemId.name}</span></strong>
                             ) : (
                               <strong><span>Undefined</span></strong>
@@ -84,71 +92,128 @@ const TablaMoneda = () => {
                         <Modal.Body>
                             <div className='container'>
                                 <div className='row'>
-                                    <div className='col-3'>
-                                        <img src={selectedItemId.image} alt="" width="auto" />
+                                    <div className='col-2'>
+                                        <center><img src={selectedItemId.image} alt="" width="140" /></center>
                                     </div>
-                                    <div className='col-1'></div>
+                                    <div className='col-2'></div>
                                     <div className='col-8'>
-                                        <h5>
+                                        <p className='textoSeparadorModal'>
                                             <b>Nombre:</b>&nbsp;{selectedItemId.name}
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>S&iacute;mbolo:</b>&nbsp;<span className='textoMayus'>{selectedItemId.symbol}</span>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Precio Actual:</b>&nbsp;{selectedItemId.current_price}<span className='textoUSDModal'>$</span>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Capitalizaci&oacute;n de Mercado:</b>&nbsp;{selectedItemId.market_cap}
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Clasificaci&oacute;n de Cap. de Mercado:</b>&nbsp;{selectedItemId.market_cap_rank}
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Valoraci&oacute;n Completamente Diluida:</b>&nbsp;{selectedItemId.fully_diluted_valuation}
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Volumen Total:</b>&nbsp;{selectedItemId.total_volume}
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>M&iacute;nimo en 24H:</b>&nbsp;{selectedItemId.low_24h}<span className='textoUSDModal'>$</span>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>M&aacute;ximo en 24H:</b>&nbsp;{selectedItemId.high_24h}<span className='textoUSDModal'>$</span>
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Diferencia de Precio en 24H:</b>&nbsp;{selectedItemId.price_change_24h}
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Porcentaje de Cambio de Precio en 24H:</b>&nbsp;{selectedItemId.price_change_percentage_24h}
-                                        </h5>
-                                        <h5>
-                                            <b>Cambio de Capitalizaci&oacute;n Burs&aacute;til en 24h:</b>&nbsp;{selectedItemId.market_cap_change_24h}
-                                        </h5>
-                                        <h5>
-                                            <b>Porcentaje de Cambio de Capitalizaci&oacute;n Burs&aacute;til en 24h:</b>&nbsp;{selectedItemId.market_cap_change_percentage_24h}
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>Cambio de Capitalizaci&oacute;n Burs&aacute;til en 24H:</b>&nbsp;{selectedItemId.market_cap_change_24h}
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>Porcentaje de Cambio de Capitalizaci&oacute;n Burs&aacute;til en 24H:</b>&nbsp;{selectedItemId.market_cap_change_percentage_24h}
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Oferta Circulante:</b>&nbsp;{selectedItemId.circulating_supply}
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Oferta Total:</b>&nbsp;{selectedItemId.total_supply}
-                                        </h5>
-                                        <h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
                                             <b>Oferta M&aacute;xima:</b>&nbsp;{selectedItemId.max_supply}
-                                        </h5>
-                                        <h5>
-                                            <b>Nombre:</b>&nbsp;{selectedItemId.name}
-                                        </h5>
-                                        <h5>
-                                            <b>S&iacute;mbolo:</b>&nbsp;{selectedItemId.symbol}
-                                        </h5>
-                                        <h5>
-                                            <b>Precio Actual:</b>&nbsp;{selectedItemId.current_price}
-                                        </h5>
-                                        <h5>
-                                            <b>Nombre:</b>&nbsp;{selectedItemId.last_updated}
-                                        </h5>
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>ATH:</b>&nbsp;{selectedItemId.ath}
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>Porcentaje de Cambio en ATH:</b>&nbsp;{selectedItemId.ath_change_percentage}
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>Fecha ATH:</b>&nbsp;{selectedItemId.ath_date ? (
+                                                <>
+                                                  {new Date(selectedItemId.ath_date).toLocaleDateString('es-ES', {
+                                                    day: '2-digit',
+                                                    month: '2-digit',
+                                                    year: 'numeric'
+                                                  })}&nbsp;
+                                                  {new Date(selectedItemId.ath_date).toISOString('es-ES', {
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                    second: '2-digit',
+                                                  }).split('T')[1].split('.')[0]}
+                                                </>
+                                              ) : (
+                                                <> Cargando... </>
+                                              )}
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>ATL:</b>&nbsp;{selectedItemId.atl}
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>Porcentaje de Cambio en ATL:</b>&nbsp;{selectedItemId.atl_change_percentage}
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>Fecha ATL:</b>&nbsp;{selectedItemId.atl_date ? (
+                                                <>
+                                                  {new Date(selectedItemId.atl_date).toLocaleDateString('es-ES', {
+                                                    day: '2-digit',
+                                                    month: '2-digit',
+                                                    year: 'numeric'
+                                                  })}&nbsp;
+                                                  {new Date(selectedItemId.atl_date).toISOString('es-ES', {
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                    second: '2-digit',
+                                                  }).split('T')[1].split('.')[0]}
+                                                </>
+                                              ) : (
+                                                <> Cargando... </>
+                                              )}
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>Porcentaje de Cambio pasado 1 hora:</b>&nbsp;{selectedItemId.price_change_percentage_1h_in_currency}
+                                        </p>
+                                        <p className='textoSeparadorModal'>
+                                            <b>&Uacute;ltima Actualizaci&oacute;n:</b>&nbsp;{selectedItemId.last_updated ? (
+                                                <>
+                                                  {new Date(selectedItemId.last_updated).toLocaleDateString('es-ES', {
+                                                    day: '2-digit',
+                                                    month: '2-digit',
+                                                    year: 'numeric'
+                                                  })}&nbsp;
+                                                  {new Date(selectedItemId.last_updated).toISOString('es-ES', {
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                    second: '2-digit',
+                                                  }).split('T')[1].split('.')[0]}
+                                                </>
+                                              ) : (
+                                                <> Cargando... </>
+                                              )}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
