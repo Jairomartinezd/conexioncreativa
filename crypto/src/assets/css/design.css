@@ -13,3 +13,9 @@
 .textoSeparadorModal{
     margin-bottom: 1px;
 }
+.textoBuscar{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin: 6px;
+}

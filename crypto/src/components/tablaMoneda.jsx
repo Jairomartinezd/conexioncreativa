@@ -9,6 +9,7 @@ const TablaMoneda = () => {
   const [data, setData] = useState([])
   const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin&names=Bitcoin&symbols=btc&category=layer-1&price_change_percentage=1h"
 
+  // Fetch data para la API
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,8 +22,10 @@ const TablaMoneda = () => {
     fetchData();
     }, [])
 
+  // Obtener el último elemento para la fecha de actualización
   const ultimoElemento = data.slice(-1)[0];
 
+  // Estado para el modal
   const [show, setShow] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState(null);
 
@@ -35,6 +38,11 @@ const TablaMoneda = () => {
       setShow(false)
       setSelectedItemId(null) // Limpiar al cerrar
   }
+
+  // Ordenar los datos por valor descendente y tomar los primeros 20
+  const sortedData = data.sort((a, b) => b.market_cap - a.market_cap);
+  const top20 = sortedData.slice(0, 20);
+  
 
   return (
     <>
@@ -71,7 +79,7 @@ const TablaMoneda = () => {
             </tr>
           </thead>
           <tbody>
-              {data.map((character) => ( 
+              {top20.map((character) => ( 
                 <tr key={character.id}>
                   <td><img src={character.image} width="30" height="30" /></td>
                   <td>{character.name}</td>
